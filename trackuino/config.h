@@ -48,7 +48,7 @@
 // - Cars:       9
 // - Home:       0
 // - IGate:      5
-#define S_CALLSIGN      "KK6GIP"
+#define S_CALLSIGN      "LA3PNA"
 #define S_CALLSIGN_ID   11
 
 // Destination callsign: APRS (with SSID=0) is usually okay.
@@ -69,7 +69,7 @@
 // APRS comment: this goes in the comment portion of the APRS message. You
 // might want to keep this short. The longer the packet, the more vulnerable
 // it is to noise. 
-#define APRS_COMMENT    "Trackuino test"
+#define APRS_COMMENT    "PNAtracker test"
 
 
 // --------------------------------------------------------------------------
@@ -95,8 +95,8 @@
 // respectively. The first balloon will transmit at 00:00:00, 00:01:00, 
 // 00:02:00, etc. amd the second balloon will transmit at 00:00:30, 00:01:30,
 // 00:02:30, etc.
-#define APRS_SLOT     0     // seconds. -1 disables slotted transmissions
-#define APRS_PERIOD   15    // seconds
+#define APRS_SLOT     -1     // seconds. -1 disables slotted transmissions
+#define APRS_PERIOD   60    // seconds
 
 // GPS baud rate (in bits per second). This is also the baud rate at which
 // debug data will be printed out the serial port.
@@ -104,17 +104,17 @@
 
 // Disable GPS and just use a predefined latitude and longitude.
 // Make sure to use the correct format. You may also define an altitude (in meters).
-//#define GPS_DISABLED
-//#define LATITUDE "3802.75N"
-//#define LONGITUDE "02340.90E"
-//#define ALTITUDE 0
+#define GPS_DISABLED
+#define LATITUDE "3802.75N"
+#define LONGITUDE "02340.90E"
+#define ALTITUDE 200
 
 // --------------------------------------------------------------------------
 // Sensors config (sensors.cpp)
 // --------------------------------------------------------------------------
 
-//#define INTERNAL_LM60_DISABLED
-//#define EXTERNAL_LM60_DISABLED
+#define INTERNAL_LM60_DISABLED
+#define EXTERNAL_LM60_DISABLED
 
 // Units for temperature sensors (Added by: Kyle Crockett)
 // 1 = Celsius, 2 = Kelvin, 3 = Fahrenheit
@@ -141,16 +141,16 @@
 // it must be between L and 65535, where L = F_CPU / 65535 and F_CPU is the
 // clock rate in hertzs. For 16 MHz Arduinos, this gives a lower limit of 
 // 245 Hz.
-#define BUZZER_FREQ             895     // Hz
+//#define BUZZER_FREQ             895     // Hz
 
 // These are the number of seconds the buzzer will stay on/off alternately
-#define BUZZER_ON_TIME          1       // secs
-#define BUZZER_OFF_TIME         2       // secs
+//#define BUZZER_ON_TIME          1       // secs
+//#define BUZZER_OFF_TIME         2       // secs
 
 // This option disables the buzzer above BUZZER_ALTITUDE meters. This is a
 // float value, so make it really high (eg. 1000000.0 = 1 million meters)
 // if you want it to never stop buzzing.
-#define BUZZER_ALTITUDE         3000.0  // meters (1 ft = 0.3048 m)
+#define BUZZER_ALTITUDE         1.0  // meters (1 ft = 0.3048 m)
 
 // --------------------------------------------------------------------------
 // Debug
@@ -168,8 +168,8 @@
 // 3. When flashing the firmware, disconnect the GPS from the RX pin or you
 //    will get errors.
 
-// #define DEBUG_GPS    // GPS sentence dump and checksum validation
-// #define DEBUG_AX25   // AX.25 frame dump
+#define DEBUG_GPS    // GPS sentence dump and checksum validation
+ #define DEBUG_AX25   // AX.25 frame dump
 // #define DEBUG_MODEM  // Modem ISR overrun and profiling
 // #define DEBUG_RESET  // AVR reset
 // #define DEBUG_SENS   // Sensors

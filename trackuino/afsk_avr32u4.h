@@ -31,7 +31,7 @@ extern const uint16_t TABLE_SIZE;
 extern const uint32_t PLAYBACK_RATE;
 
 // Exported vars
-extern const prog_uchar afsk_sine_table[];
+extern const unsigned char afsk_sine_table[];
 
 //#define AFSK_USE_TIMER1 1
 #define AFSK_USE_TIMER4 1

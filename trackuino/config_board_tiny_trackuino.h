@@ -90,7 +90,7 @@
 // This is the LED pin (13 on most Arduinos, 17 on Atmega32u4). The LED will be on while the AVR is
 // running and off while it's sleeping, so its brightness gives an indication
 // of the CPU activity.
-#define LED_PIN                 17
+#define LED_PIN                 13
 
 // --------------------------------------------------------------------------
 // LCD
