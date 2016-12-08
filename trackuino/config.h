@@ -34,8 +34,8 @@
 // You must include a board config file that specifies the pins used by your
 // hardware.
 
-//#include "config_board_tiny_trackuino.h"
-#include "config_board_trackuino_shield.h"
+#include "config_board_tiny_trackuino.h"
+//#include "config_board_trackuino_shield.h"
 
 // --------------------------------------------------------------------------
 // APRS config (aprs.c)
