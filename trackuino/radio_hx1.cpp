@@ -57,5 +57,6 @@ void RadioHx1::ptt_on()
 void RadioHx1::ptt_off()
 {
   pin_write(PTT_PIN, LOW);
+  si5351.output_enable(SI5351_CLK0, 0); // this seems to be the line messing it all up
   delay(25);
 }
