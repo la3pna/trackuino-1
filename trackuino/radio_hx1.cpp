@@ -48,15 +48,23 @@ unsigned long long freq = 14482500000ULL;
 
 void RadioHx1::ptt_on()
 {
+  noInterrupts();
   pin_write(PTT_PIN, HIGH);
-  si5351.output_enable(SI5351_CLK0, 1);
-
-  delay(25);   // The HX1 takes 5 ms from PTT to full RF, give it 25
+  cli();
+ // si5351.output_enable(SI5351_CLK0, HIGH);
+ sei();
+  interrupts();
+  delay(125);   // The HX1 takes 5 ms from PTT to full RF, give it 25
+  
 }
 
 void RadioHx1::ptt_off()
 {
+ noInterrupts();
   pin_write(PTT_PIN, LOW);
-  si5351.output_enable(SI5351_CLK0, 0); // this seems to be the line messing it all up
-  delay(25);
+  cli();
+ si5351.output_enable(SI5351_CLK0, LOW); // this seems to be the line messing it all up
+sei();
+ interrupts();
+  delay(125);
 }
