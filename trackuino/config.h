@@ -64,7 +64,7 @@
 
 // Symbol table and code: '/' for primary table, code 'O' for balloon, '-' for QTH.
 #define SYMBOL_TABLE    '/'
-#define SYMBOL_CODE     '-'
+#define SYMBOL_CODE     'l'
 
 // APRS comment: this goes in the comment portion of the APRS message. You
 // might want to keep this short. The longer the packet, the more vulnerable
@@ -105,8 +105,8 @@
 // Disable GPS and just use a predefined latitude and longitude.
 // Make sure to use the correct format. You may also define an altitude (in meters).
 #define GPS_DISABLED
-#define LATITUDE "3802.75N"
-#define LONGITUDE "02340.90E"
+#define LATITUDE "5943.10N"
+#define LONGITUDE "01008.40E" 
 #define ALTITUDE 200
 
 // --------------------------------------------------------------------------
