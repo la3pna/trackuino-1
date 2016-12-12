@@ -23,6 +23,7 @@
 #include <stdint.h>
 #include <avr/pgmspace.h>
 #include "config.h"
+#include "radio_hx1.h"
 
 // By default, we use TIMER4 on 32u4 processors, but we still have support for TIMER1
 // Note(johnb): As long as timer4 works fine, we could drop the timer1 code since
@@ -44,7 +45,7 @@ extern const uint16_t TABLE_SIZE;
 extern const uint32_t PLAYBACK_RATE;
 
 // Exported vars
-extern const prog_uchar afsk_sine_table[];
+extern const unsigned char afsk_sine_table[];
 
 #if AVR32U4_USE_TIMER1
 #  if AUDIO_PIN == 9
@@ -99,6 +100,7 @@ inline int afsk_isr_overrun()
 
 
 // Exported functions
+static RadioHx1 radio;
 void afsk_setup();
 void afsk_send(const uint8_t *buffer, int len);
 void afsk_start();

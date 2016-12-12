@@ -65,7 +65,7 @@ volatile static uint8_t sample_fifo_tail = 0;
 volatile static uint32_t sample_overruns = 0;
 
 // The radio (class defined in config.h)
-static RadioHx1 radio;
+//static RadioHx1 radio;
 
 volatile static unsigned int afsk_packet_size = 0;
 volatile static const uint8_t *afsk_packet;
