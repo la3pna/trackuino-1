@@ -195,5 +195,18 @@ void loop()
 #endif
   }
 
+/*
+  if(radio.ptt)
+  {
+    //radio.carrier_on();
+    //DEBUG_SERIAL.println("...Carrier On");
+  }
+  else
+  {
+    //radio.carrier_off();
+    //DEBUG_SERIAL.println("...Carrier Off");
+  }
+ */
+
   power_save(); // Incoming GPS data or interrupts will wake us up
 }

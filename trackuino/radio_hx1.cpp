@@ -21,9 +21,11 @@
 #include "pin.h"
 #include "radio_hx1.h"
 #include <Arduino.h>
-Si5351 si5351;
+
+#include "si5351.h"
 #include "Wire.h"
 
+Si5351 si5351;
 
 void RadioHx1::setup()
 {
@@ -32,7 +34,7 @@ void RadioHx1::setup()
   pin_write(PTT_PIN, LOW);
   pinMode(AUDIO_PIN, OUTPUT);
     si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, 0);
-unsigned long long freq = 14482500000ULL;
+  unsigned long long freq = 14482500000ULL;
   // Set VCXO osc to 876 MHz (146 MHz x 6), 40 ppm pull
   si5351.set_vcxo(freq*6, 40);
 
@@ -41,30 +43,33 @@ unsigned long long freq = 14482500000ULL;
 
   // Tune to 146 MHz center frequency
   si5351.set_freq_manual(freq, freq*6, SI5351_CLK0);
- si5351.output_enable(SI5351_CLK0, 0);
+  si5351.output_enable(SI5351_CLK0, 0);
   delay(25);
 
 }
 
 void RadioHx1::ptt_on()
 {
-  noInterrupts();
+  //noInterrupts();
   pin_write(PTT_PIN, HIGH);
-  cli();
- // si5351.output_enable(SI5351_CLK0, HIGH);
- sei();
-  interrupts();
+  //ptt = true;
+  //cli();
+  si5351.output_enable(SI5351_CLK0, 1);
+ //sei();
+  //interrupts();
   delay(125);   // The HX1 takes 5 ms from PTT to full RF, give it 25
   
 }
 
 void RadioHx1::ptt_off()
 {
- noInterrupts();
+
   pin_write(PTT_PIN, LOW);
-  cli();
- si5351.output_enable(SI5351_CLK0, LOW); // this seems to be the line messing it all up
-sei();
- interrupts();
+  //ptt = false;
+  //noInterrupts();
+  si5351.output_enable(SI5351_CLK0, 0); // this seems to be the line messing it all up
+  //interrupts();
   delay(125);
 }
+
+

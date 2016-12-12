@@ -48,8 +48,8 @@
 // - Cars:       9
 // - Home:       0
 // - IGate:      5
-#define S_CALLSIGN      "LA3PNA"
-#define S_CALLSIGN_ID   11
+#define S_CALLSIGN      "NT7S"
+#define S_CALLSIGN_ID   0
 
 // Destination callsign: APRS (with SSID=0) is usually okay.
 #define D_CALLSIGN      "APRS"
@@ -100,11 +100,11 @@
 
 // GPS baud rate (in bits per second). This is also the baud rate at which
 // debug data will be printed out the serial port.
-#define GPS_BAUDRATE  9600
+#define GPS_BAUDRATE  4800
 
 // Disable GPS and just use a predefined latitude and longitude.
 // Make sure to use the correct format. You may also define an altitude (in meters).
-//#define GPS_DISABLED
+#define GPS_DISABLED
 #define LATITUDE "5943.10N" 
 #define LONGITUDE "01008.40E"
 #define ALTITUDE 200
@@ -168,7 +168,7 @@
 // 3. When flashing the firmware, disconnect the GPS from the RX pin or you
 //    will get errors.
 
-// #define DEBUG_GPS    // GPS sentence dump and checksum validation
+//#define DEBUG_GPS    // GPS sentence dump and checksum validation
  #define DEBUG_AX25   // AX.25 frame dump
 // #define DEBUG_MODEM  // Modem ISR overrun and profiling
 // #define DEBUG_RESET  // AVR reset
