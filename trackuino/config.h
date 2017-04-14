@@ -142,30 +142,6 @@
 #define VMETER_R1       9999
 #define VMETER_R2       3298
 
-// --------------------------------------------------------------------------
-// Buzzer config (buzzer.cpp)
-// --------------------------------------------------------------------------
-
-// Type of buzzer (0=active, 1=passive). An active buzzer is driven by a
-// DC voltage. A passive buzzer needs a PWM signal.
-#define BUZZER_TYPE             0
-
-// When using a passive buzzer, specify the PWM frequency here. Choose one
-// that maximizes the volume according to the buzzer's datasheet. Not all
-// the frequencies are valid, check out the buzzer_*.cpp code. On Arduino,
-// it must be between L and 65535, where L = F_CPU / 65535 and F_CPU is the
-// clock rate in hertzs. For 16 MHz Arduinos, this gives a lower limit of
-// 245 Hz.
-//#define BUZZER_FREQ             895     // Hz
-
-// These are the number of seconds the buzzer will stay on/off alternately
-//#define BUZZER_ON_TIME          1       // secs
-//#define BUZZER_OFF_TIME         2       // secs
-
-// This option disables the buzzer above BUZZER_ALTITUDE meters. This is a
-// float value, so make it really high (eg. 1000000.0 = 1 million meters)
-// if you want it to never stop buzzing.
-#define BUZZER_ALTITUDE         1.0  // meters (1 ft = 0.3048 m)
 
 // --------------------------------------------------------------------------
 // Debug

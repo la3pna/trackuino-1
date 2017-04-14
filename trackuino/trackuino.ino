@@ -43,6 +43,7 @@
 
 #include "afsk_pic32.h"
 #include "aprs.h"
+
 #include "gps.h"
 #include "pin.h"
 #include "power.h"
@@ -90,7 +91,7 @@ void setup()
 #endif
 
 #ifndef GPS_DISABLED
-  buzzer_setup();
+
 #endif
   afsk_setup();
 #ifndef GPS_DISABLED
@@ -154,15 +155,7 @@ void get_pos()
       valid_pos = gps_decode(GPS_SERIAL.read());
   } while ( (millis() - timeout < VALID_POS_TIMEOUT) && ! valid_pos) ;
 
-#ifndef GPS_DISABLED
-  if (valid_pos) {
-    if (gps_altitude > BUZZER_ALTITUDE) {
-      buzzer_off();   // In space, no one can hear you buzz
-    } else {
-      buzzer_on();
-    }
-  }
-#endif
+
 }
 
 void loop()
