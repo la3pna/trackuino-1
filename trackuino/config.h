@@ -129,7 +129,7 @@
 // --------------------------------------------------------------------------
 
 #define INTERNAL_LM60_DISABLED
-#define EXTERNAL_LM60_DISABLED
+//#define EXTERNAL_LM60_DISABLED //Unncomment if a external LM60 is mounted
 
 // Units for temperature sensors (Added by: Kyle Crockett)
 // 1 = Celsius, 2 = Kelvin, 3 = Fahrenheit

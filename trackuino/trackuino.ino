@@ -43,7 +43,6 @@
 
 #include "afsk_pic32.h"
 #include "aprs.h"
-#include "buzzer.h"
 #include "gps.h"
 #include "pin.h"
 #include "power.h"
