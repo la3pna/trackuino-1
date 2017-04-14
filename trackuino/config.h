@@ -1,19 +1,19 @@
 /* trackuino copyright (C) 2010  EA5HAV Javi
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
+
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   as published by the Free Software Foundation; either version 2
+   of the License, or (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
 
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
@@ -34,8 +34,9 @@
 // You must include a board config file that specifies the pins used by your
 // hardware.
 
-#include "config_board_tiny_trackuino.h"
+//#include "config_board_tiny_trackuino.h"
 //#include "config_board_trackuino_shield.h"
+#include "config_board_pnatracker.h"
 
 // --------------------------------------------------------------------------
 // APRS config (aprs.c)
@@ -68,7 +69,7 @@
 
 // APRS comment: this goes in the comment portion of the APRS message. You
 // might want to keep this short. The longer the packet, the more vulnerable
-// it is to noise. 
+// it is to noise.
 #define APRS_COMMENT    "PNAtracker test"
 
 
@@ -91,8 +92,8 @@
 //
 // When launching multiple balloons, use the same APRS_PERIOD in all balloons
 // and set APRS_SLOT so that the packets are spaced equally in time.
-// Eg. for two balloons and APRS_PERIOD = 60, set APRS_SLOT to 0 and 30, 
-// respectively. The first balloon will transmit at 00:00:00, 00:01:00, 
+// Eg. for two balloons and APRS_PERIOD = 60, set APRS_SLOT to 0 and 30,
+// respectively. The first balloon will transmit at 00:00:00, 00:01:00,
 // 00:02:00, etc. amd the second balloon will transmit at 00:00:30, 00:01:30,
 // 00:02:30, etc.
 #define APRS_SLOT     -1     // seconds. -1 disables slotted transmissions
@@ -104,10 +105,24 @@
 
 // Disable GPS and just use a predefined latitude and longitude.
 // Make sure to use the correct format. You may also define an altitude (in meters).
-//#define GPS_DISABLED
-#define LATITUDE "5943.11N" 
+#define GPS_DISABLED
+#define LATITUDE "5943.11N"
 #define LONGITUDE "01008.40E"
 #define ALTITUDE 200
+
+
+// --------------------------------------------------------------------------
+// Radio config (RadioHx1.cpp)
+// --------------------------------------------------------------------------
+
+// Need to add the constants for the radio chip. 
+//
+// 
+#define FREQUENCY 144800000 // Frequency in Hz.
+
+// CORRECTION constant is determined during production and not changed. 
+#define CORRECTION  202200
+
 
 // --------------------------------------------------------------------------
 // Sensors config (sensors.cpp)
@@ -139,7 +154,7 @@
 // that maximizes the volume according to the buzzer's datasheet. Not all
 // the frequencies are valid, check out the buzzer_*.cpp code. On Arduino,
 // it must be between L and 65535, where L = F_CPU / 65535 and F_CPU is the
-// clock rate in hertzs. For 16 MHz Arduinos, this gives a lower limit of 
+// clock rate in hertzs. For 16 MHz Arduinos, this gives a lower limit of
 // 245 Hz.
 //#define BUZZER_FREQ             895     // Hz
 
@@ -158,9 +173,9 @@
 
 // Debug info includes printouts from different modules to aid in testing and
 // debugging.
-// 
-// 1. To properly receive debug information, only connect the Arduino RX pin 
-//    to the GPS TX pin, and leave the Arduino TX pin disconnected. 
+//
+// 1. To properly receive debug information, only connect the Arduino RX pin
+//    to the GPS TX pin, and leave the Arduino TX pin disconnected.
 //
 // 2. On the serial monitor, set the baudrate to GPS_BAUDRATE (above),
 //    usually 9600.

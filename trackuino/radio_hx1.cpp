@@ -33,8 +33,8 @@ void RadioHx1::setup()
   pinMode(PTT_PIN, OUTPUT);
   pin_write(PTT_PIN, LOW);
   pinMode(AUDIO_PIN, OUTPUT);
-    si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, 0);
-  unsigned long long freq = 14482500000ULL;
+    si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, CORRECTION);
+  unsigned long long freq = FREQUENCY *100ULL;
   // Set VCXO osc to 876 MHz (146 MHz x 6), 40 ppm pull
   si5351.set_vcxo(freq*6, 40);
 
