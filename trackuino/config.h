@@ -50,7 +50,7 @@
 // - Home:       0
 // - IGate:      5
 #define S_CALLSIGN      "LA3PNA"
-#define S_CALLSIGN_ID   11
+#define S_CALLSIGN_ID   13
 
 // Destination callsign: APRS (with SSID=0) is usually okay.
 #define D_CALLSIGN      "APRS"
@@ -108,7 +108,7 @@
 #define GPS_DISABLED
 #define LATITUDE "5943.11N"
 #define LONGITUDE "01008.40E"
-#define ALTITUDE 200
+#define ALTITUDE 250
 
 
 // --------------------------------------------------------------------------
@@ -121,26 +121,27 @@
 #define FREQUENCY 144800000 // Frequency in Hz.
 
 // CORRECTION constant is determined during production and not changed. 
-#define CORRECTION  202200
+#define CORRECTION  3292
 
+#define DEVIATION 110
 
 // --------------------------------------------------------------------------
 // Sensors config (sensors.cpp)
 // --------------------------------------------------------------------------
 
-#define INTERNAL_LM60_DISABLED
-//#define EXTERNAL_LM60_DISABLED //Unncomment if a external LM60 is mounted
+//#define INTERNAL_LM60_DISABLED
+#define EXTERNAL_LM60_DISABLED //Unncomment if a external LM60 is mounted
 
 // Units for temperature sensors (Added by: Kyle Crockett)
 // 1 = Celsius, 2 = Kelvin, 3 = Fahrenheit
 #define TEMP_UNIT 1
 
 // Calibration value in the units selected. Use integer only.
-#define CALIBRATION_VAL 0
+#define CALIBRATION_VAL -100
 
 // Resistors divider for the voltage meter (ohms)
-#define VMETER_R1       9999
-#define VMETER_R2       3298
+#define VMETER_R1       1
+#define VMETER_R2       1
 
 
 // --------------------------------------------------------------------------
@@ -159,11 +160,11 @@
 // 3. When flashing the firmware, disconnect the GPS from the RX pin or you
 //    will get errors.
 
-//#define DEBUG_GPS    // GPS sentence dump and checksum validation
-// #define DEBUG_AX25   // AX.25 frame dump
-// #define DEBUG_MODEM  // Modem ISR overrun and profiling
-// #define DEBUG_RESET  // AVR reset
-// #define DEBUG_SENS   // Sensors
+#define DEBUG_GPS    // GPS sentence dump and checksum validation
+ #define DEBUG_AX25   // AX.25 frame dump
+ #define DEBUG_MODEM  // Modem ISR overrun and profiling
+ #define DEBUG_RESET  // AVR reset
+ #define DEBUG_SENS   // Sensors
 
 #endif
 

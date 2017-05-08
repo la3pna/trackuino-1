@@ -36,14 +36,14 @@ void RadioHx1::setup()
     si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, CORRECTION);
   unsigned long long freq = FREQUENCY *100ULL;
   // Set VCXO osc to 876 MHz (146 MHz x 6), 40 ppm pull
-  si5351.set_vcxo(freq*6, 40);
+  si5351.set_vcxo(freq*6, DEVIATION);
 
   // Set CLK0 to be locked to VCXO
   si5351.set_ms_source(SI5351_CLK0, SI5351_PLLB);
 
   // Tune to 146 MHz center frequency
   si5351.set_freq_manual(freq, freq*6, SI5351_CLK0);
-  si5351.output_enable(SI5351_CLK0, 0);
+ si5351.output_enable(SI5351_CLK0, 0);
   delay(25);
 
 }
@@ -52,12 +52,10 @@ void RadioHx1::ptt_on()
 {
   //noInterrupts();
   pin_write(PTT_PIN, HIGH);
-  //ptt = true;
-  //cli();
+  
   si5351.output_enable(SI5351_CLK0, 1);
- //sei();
-  //interrupts();
-  delay(125);   // The HX1 takes 5 ms from PTT to full RF, give it 25
+ 
+  delay(250);   // The HX1 takes 5 ms from PTT to full RF, give it 25
   
 }
 
@@ -65,11 +63,10 @@ void RadioHx1::ptt_off()
 {
 
   pin_write(PTT_PIN, LOW);
-  //ptt = false;
-  //noInterrupts();
+ 
   si5351.output_enable(SI5351_CLK0, 0); // this seems to be the line messing it all up
-  //interrupts();
-  delay(125);
+  
+  delay(250);
 }
 
 
