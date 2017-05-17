@@ -70,12 +70,12 @@
 // Pin mappings for the internal / external temperature sensors. VS refers
 // to (arduino) digital pins, whereas VOUT refers to (arduino) analog pins.
 #define INTERNAL_LM60_VS_PIN     4
-#define INTERNAL_LM60_VOUT_PIN   15
+#define INTERNAL_LM60_VOUT_PIN   1
 #define EXTERNAL_LM60_VS_PIN     5
-#define EXTERNAL_LM60_VOUT_PIN   16
+#define EXTERNAL_LM60_VOUT_PIN   2
 
 // Voltage meter analog pin
-#define VMETER_PIN      14
+#define VMETER_PIN      0
 
 
 
