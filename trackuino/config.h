@@ -141,9 +141,8 @@
 #define CALIBRATION_VAL 0
 
 // Resistors divider for the voltage meter (ohms)
-
-#define VMETER_R1       1
-#define VMETER_R2       1
+#define VMETER_R1       10000
+#define VMETER_R2       57800
 
 
 
