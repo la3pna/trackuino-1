@@ -50,7 +50,7 @@ void RadioHx1::setup()
 
 void RadioHx1::ptt_on()
 {
-  
+  setup();
   pin_write(PTT_PIN, HIGH);
   si5351.output_enable(SI5351_CLK0, 1);
   delay(125);   // The HX1 takes 5 ms from PTT to full RF, give it 25
