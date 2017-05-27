@@ -78,7 +78,7 @@
 // --------------------------------------------------------------------------
 
 // TX delay in milliseconds
-#define TX_DELAY      1000
+#define TX_DELAY      500
 
 // --------------------------------------------------------------------------
 // Tracker config (trackuino.ino)
@@ -115,12 +115,12 @@
 // Radio config (RadioHx1.cpp)
 // --------------------------------------------------------------------------
 
-// Need to add the constants for the radio chip. 
 //
 // 
 #define FREQUENCY 144800000 // Frequency in Hz.
 
 // CORRECTION constant is determined during production and not changed. 
+// This constants are written on the board or enclosure. 
 #define CORRECTION  350
 
 #define DEVIATION 80
@@ -130,8 +130,8 @@
 // Sensors config (sensors.cpp)
 // --------------------------------------------------------------------------
 
-#define INTERNAL_LM60_DISABLED
-//#define EXTERNAL_LM60_DISABLED //Unncomment if a external LM60 is mounted
+//#define INTERNAL_LM60_DISABLED
+#define EXTERNAL_LM60_DISABLED //Unncomment if a external LM60 is mounted
 
 // Units for temperature sensors (Added by: Kyle Crockett)
 // 1 = Celsius, 2 = Kelvin, 3 = Fahrenheit
