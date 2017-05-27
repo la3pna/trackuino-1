@@ -121,9 +121,9 @@
 
 // CORRECTION constant is determined during production and not changed. 
 // This constants are written on the board or enclosure. 
-#define CORRECTION  350
+#define CORRECTION  18640
 
-#define DEVIATION 80
+#define DEVIATION 90
 
 
 // --------------------------------------------------------------------------
@@ -141,7 +141,7 @@
 #define CALIBRATION_VAL 0
 
 // Resistors divider for the voltage meter (ohms)
-#define VMETER_R1       10000
+#define VMETER_R1       9980
 #define VMETER_R2       57800
 
 

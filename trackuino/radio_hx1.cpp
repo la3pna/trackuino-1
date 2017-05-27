@@ -33,9 +33,9 @@ void RadioHx1::setup()
   pinMode(PTT_PIN, OUTPUT);
   pin_write(PTT_PIN, LOW);
   pinMode(AUDIO_PIN, OUTPUT);
-    si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, CORRECTION);
+  
+  si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, CORRECTION);
   unsigned long long freq = FREQUENCY *100ULL;
-  // Set VCXO osc to 876 MHz (146 MHz x 6), 40 ppm pull
   si5351.set_vcxo(freq*6, DEVIATION);
 
   // Set CLK0 to be locked to VCXO
@@ -43,6 +43,7 @@ void RadioHx1::setup()
 
   // Tune to 146 MHz center frequency
   si5351.set_freq_manual(freq, freq*6, SI5351_CLK0);
+  si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_6MA);
   si5351.output_enable(SI5351_CLK0, 0);
   delay(25);
 
@@ -61,7 +62,7 @@ void RadioHx1::ptt_off()
 {
 
   pin_write(PTT_PIN, LOW);
-  si5351.output_enable(SI5351_CLK0, 0); // this seems to be the line messing it all up
+  si5351.output_enable(SI5351_CLK0, 0);
   delay(125);
 }
 
