@@ -44,7 +44,7 @@ void RadioHx1::setup()
   // Tune to 146 MHz center frequency
   si5351.set_freq_manual(freq, freq*6, SI5351_CLK0);
   si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_6MA);
-  si5351.output_enable(SI5351_CLK0, 0);
+//  si5351.output_enable(SI5351_CLK0, 0);
   delay(25);
 
 }
@@ -53,7 +53,7 @@ void RadioHx1::ptt_on()
 {
   setup();
   pin_write(PTT_PIN, HIGH);
-  si5351.output_enable(SI5351_CLK0, 1);
+//  si5351.output_enable(SI5351_CLK0, 1);
   delay(125);   // The HX1 takes 5 ms from PTT to full RF, give it 25
   
 }
@@ -62,7 +62,7 @@ void RadioHx1::ptt_off()
 {
 
   pin_write(PTT_PIN, LOW);
-  si5351.output_enable(SI5351_CLK0, 0);
+ // si5351.output_enable(SI5351_CLK0, 0);
   delay(125);
 }
 
