@@ -44,6 +44,7 @@ void RadioHx1::ptt_on()
 {
   setup();
   pin_write(PTT_PIN, HIGH);
+  
   if(gps_valid){
   pin_write(SW_PIN,HIGH);
   }
@@ -53,10 +54,11 @@ void RadioHx1::ptt_on()
     // Show modem ISR stats from the previous transmission
     Serial.println();
     Serial.println(gps_valid);
+    Serial.println();
 #endif
   
   delay(25); 
-   si5351.output_enable(SI5351_CLK0, 1);
+   
    si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, CORRECTION);
   unsigned long long freq = FREQUENCY *100ULL;
   si5351.set_vcxo(freq*6, DEVIATION);
@@ -68,6 +70,7 @@ void RadioHx1::ptt_on()
   si5351.set_freq_manual(freq, freq*6, SI5351_CLK0);
   si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_6MA);
  // si5351.output_enable(SI5351_CLK0, 0);
+ si5351.output_enable(SI5351_CLK0, 1);
   delay(25);
 }
 
