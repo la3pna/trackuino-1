@@ -65,7 +65,7 @@
 
 // Symbol table and code: '/' for primary table, code 'O' for balloon, '-' for QTH.
 #define SYMBOL_TABLE    '/'
-#define SYMBOL_CODE     'l'
+#define SYMBOL_CODE     '['
 
 // APRS comment: this goes in the comment portion of the APRS message. You
 // might want to keep this short. The longer the packet, the more vulnerable
@@ -105,10 +105,10 @@
 
 // Disable GPS and just use a predefined latitude and longitude.
 // Make sure to use the correct format. You may also define an altitude (in meters).
-#define GPS_DISABLED
-#define LATITUDE "5943.11N"
-#define LONGITUDE "01008.40E"
-#define ALTITUDE 200
+//#define GPS_DISABLED
+//#define LATITUDE "5943.11N"
+//#define LONGITUDE "01008.40E"
+//#define ALTITUDE 200
 
 
 // --------------------------------------------------------------------------
@@ -121,9 +121,9 @@
 
 // CORRECTION constant is determined during production and not changed. 
 // This constants are written on the board or enclosure. 
-#define CORRECTION  18640
+#define CORRECTION  7638
 
-#define DEVIATION 90
+#define DEVIATION 50
 
 
 // --------------------------------------------------------------------------
@@ -141,8 +141,8 @@
 #define CALIBRATION_VAL 0
 
 // Resistors divider for the voltage meter (ohms)
-#define VMETER_R1       9980
-#define VMETER_R2       57800
+#define VMETER_R2       9980
+#define VMETER_R1       57600
 
 
 
@@ -162,11 +162,12 @@
 // 3. When flashing the firmware, disconnect the GPS from the RX pin or you
 //    will get errors.
 
-//#define DEBUG_GPS    // GPS sentence dump and checksum validation
-// #define DEBUG_AX25   // AX.25 frame dump
-// #define DEBUG_MODEM  // Modem ISR overrun and profiling
-// #define DEBUG_RESET  // AVR reset
-// #define DEBUG_SENS   // Sensors
+ #define DEBUG_GPS    // GPS sentence dump and checksum validation
+ #define DEBUG_AX25   // AX.25 frame dump
+ #define DEBUG_MODEM  // Modem ISR overrun and profiling
+ #define DEBUG_RESET  // AVR reset
+ #define DEBUG_SENS   // Sensors
+ #define DEBUG_RADIO // Radio debug
 
 #endif
 

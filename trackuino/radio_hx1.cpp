@@ -20,6 +20,7 @@
 #include "config.h"
 #include "pin.h"
 #include "radio_hx1.h"
+#include "gps.h"
 #include <Arduino.h>
 
 #include "si5351.h"
@@ -33,8 +34,30 @@ void RadioHx1::setup()
   pinMode(PTT_PIN, OUTPUT);
   pin_write(PTT_PIN, LOW);
   pinMode(AUDIO_PIN, OUTPUT);
+
+  pinMode(SW_PIN,OUTPUT);
+  pin_write(SW_PIN,LOW);
+
+}
+
+void RadioHx1::ptt_on()
+{
+  setup();
+  pin_write(PTT_PIN, HIGH);
+  if(gps_valid){
+  pin_write(SW_PIN,HIGH);
+  }
+
+
+#ifdef DEBUG_RADIO
+    // Show modem ISR stats from the previous transmission
+    Serial.println();
+    Serial.println(gps_valid);
+#endif
   
-  si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, CORRECTION);
+  delay(25); 
+   si5351.output_enable(SI5351_CLK0, 1);
+   si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, CORRECTION);
   unsigned long long freq = FREQUENCY *100ULL;
   si5351.set_vcxo(freq*6, DEVIATION);
 
@@ -44,18 +67,8 @@ void RadioHx1::setup()
   // Tune to 146 MHz center frequency
   si5351.set_freq_manual(freq, freq*6, SI5351_CLK0);
   si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_6MA);
-  si5351.output_enable(SI5351_CLK0, 0);
+ // si5351.output_enable(SI5351_CLK0, 0);
   delay(25);
-
-}
-
-void RadioHx1::ptt_on()
-{
-  setup();
-  pin_write(PTT_PIN, HIGH);
-  si5351.output_enable(SI5351_CLK0, 1);
-  delay(125);   // The HX1 takes 5 ms from PTT to full RF, give it 25
-  
 }
 
 void RadioHx1::ptt_off()
@@ -63,6 +76,8 @@ void RadioHx1::ptt_off()
 
   pin_write(PTT_PIN, LOW);
   si5351.output_enable(SI5351_CLK0, 0);
+  delay(25);
+  pin_write(SW_PIN,LOW);
   delay(125);
 }
 

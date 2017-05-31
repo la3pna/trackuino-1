@@ -108,6 +108,7 @@ static char new_aprs_lon[10];
 static float new_course;
 static float new_speed;
 static float new_altitude;
+static bool gps_valid = false;
 
 // Public (extern) variables, readable from other modules
 char gps_time[7];       // HHMMSS
@@ -160,10 +161,14 @@ void parse_time(const char *token)
 void parse_status(const char *token)
 {
   // "A" = active, "V" = void. We shoud disregard void sentences
-  if (strcmp(token, "A") == 0)
+  if (strcmp(token, "A") == 0){
     active = true;
-  else
+    gps_valid = true;
+  }
+  else{
     active = false;
+    gps_valid = false;
+  }
 }
 
 void parse_lat(const char *token)
