@@ -44,8 +44,15 @@ void RadioHx1::ptt_on()
 {
   setup();
   pin_write(PTT_PIN, HIGH);
+
+  static bool nogps;
+  #ifdef GPS_DISABLED
+  nogps = true;
+  #else
+   nogps = false;
+  #endif
   
-  if(gps_valid){
+  if(gps_valid || nogps){
   pin_write(SW_PIN,HIGH);
   }
 
